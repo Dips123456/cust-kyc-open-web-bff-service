@@ -19,7 +19,7 @@ spec:
         app: cust-kyc-open-web-bff-service
     spec:
       containers:
-      - image: default-quay-registry.apps.blr-hub.ubidp.local/nonproddev/cust-kyc-open-web-bff-service:f4587cd
+      - image: default-quay-registry.apps.xxx.xxx.local/nonproddev/cust-kyc-open-web-bff-service:f4587cd
         imagePullPolicy: IfNotPresent
         name: cust-kyc-open-web-bff-service
         ports:
