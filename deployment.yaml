@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cust-kyc-open-web-bff-service
+  name: cust-kyc-open-web-bff-service
+spec:
+  selector:
+    matchLabels:
+      app: cust-kyc-open-web-bff-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: cust-kyc-open-web-bff-service
+    spec:
+      containers:
+      - image: default-quay-registry.apps.blr-hub.ubidp.local/nonproddev/cust-kyc-open-web-bff-service:f4587cd
+        imagePullPolicy: IfNotPresent
+        name: cust-kyc-open-web-bff-service
+        ports:
+        - containerPort: 8080
+          name: 8080-tcp
+        resources:
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 250m
+            memory: 250Mi
+      restartPolicy: Always
